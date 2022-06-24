@@ -16,14 +16,18 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;0,800;0,900;1,100;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+
     <title>Weather Application</title>
   </head>
 
   <body>
     <div class="container">
-      <h1 id="city-title">City and temp</h1>
+      <h1>
+        <span id="city-title">City, </span><span id="cityTemp">Temp</span
+        ><sup>°C</sup>
+      </h1>
       <p class="date-hour" id="date-hour">
         Sunday, June 5<sup>th</sup> at 10:15 PM
       </p>
