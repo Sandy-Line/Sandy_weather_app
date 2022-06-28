@@ -39,23 +39,7 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${currentDay} at ${hours}:${minutes}`;
 }
 
-/**** Display the h1 temperature ***/
-
-function displayCityAndTemp(response) {
-  console.log(response);
-  let city = document.querySelector("#city-title");
-  city.innerHTML = response.data.name;
-  let cityTemp = document.querySelector("#cityTemp");
-  cityTemp.innerHTML = Math.round(response.data.main.temp);
-  let date = document.querySelector("#date-and-hour");
-  date.innerHTML = formatDate(response.data.dt * 1000);
-
-  let image = document.querySelector("#image");
-  let icon = response.data.weather["0"].icon;
-  let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
-  image.setAttribute("src", iconUrl);
-
+function displayImg(iconUrl) {
   if (iconUrl === `http://openweathermap.org/img/wn/01d@2x.png`) {
     document.getElementById("image").src = "medias/full-sun-icon.png";
   } else if (iconUrl === `http://openweathermap.org/img/wn/02d@2x.png`) {
@@ -80,8 +64,27 @@ function displayCityAndTemp(response) {
   }
 }
 
+/**** Display the h1 temperature ***/
+
+function displayCityAndTemp(response) {
+  console.log(response);
+  let city = document.querySelector("#city-title");
+  city.innerHTML = response.data.name;
+  let cityTemp = document.querySelector("#cityTemp");
+  cityTemp.innerHTML = Math.ceil(response.data.main.temp);
+  let date = document.querySelector("#date-and-hour");
+  date.innerHTML = formatDate(response.data.dt * 1000);
+
+  let image = document.querySelector("#image");
+  let icon = response.data.weather["0"].icon;
+  let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+  image.setAttribute("src", iconUrl);
+  displayImg(iconUrl);
+}
+
 let key = "59ebc73950183d72b027190e832e1b5b";
-let city = "Montreal";
+let city = "Paris";
 let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
 
 axios.get(url).then(displayCityAndTemp);
