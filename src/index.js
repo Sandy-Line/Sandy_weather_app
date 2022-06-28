@@ -49,6 +49,35 @@ function displayCityAndTemp(response) {
   cityTemp.innerHTML = Math.round(response.data.main.temp);
   let date = document.querySelector("#date-and-hour");
   date.innerHTML = formatDate(response.data.dt * 1000);
+
+  let image = document.querySelector("#image");
+  let icon = response.data.weather["0"].icon;
+  let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+  image.setAttribute("src", iconUrl);
+
+  if (iconUrl === `http://openweathermap.org/img/wn/01d@2x.png`) {
+    document.getElementById("image").src = "medias/full-sun-icon.png";
+  } else if (iconUrl === `http://openweathermap.org/img/wn/02d@2x.png`) {
+    document.getElementById("image").src = "medias/sun-cloud-icon.png";
+  } else if (
+    iconUrl === `http://openweathermap.org/img/wn/03d@2x.png` ||
+    `http://openweathermap.org/img/wn/04d@2x.png`
+  ) {
+    document.getElementById("image").src = "medias/cloudy.png";
+  } else if (iconUrl === `http://openweathermap.org/img/wn/09d@2x.png`) {
+    document.getElementById("image").src = "medias/showers.png";
+  } else if (iconUrl === `http://openweathermap.org/img/wn/10d@2x.png`) {
+    document.getElementById("image").src = "medias/rainy.png";
+  } else if (iconUrl === `http://openweathermap.org/img/wn/11d@2x.png`) {
+    document.getElementById("image").src = "medias/storm.png";
+  } else if (iconUrl === `http://openweathermap.org/img/wn/13d@2x.png`) {
+    document.getElementById("image").src = "medias/snowy.png";
+  } else if (iconUrl === `http://openweathermap.org/img/wn/50d@2x.png`) {
+    document.getElementById("image").src = "medias/mist.png";
+  } else {
+    document.getElementById("image").src = "medias/clear.png";
+  }
 }
 
 let key = "59ebc73950183d72b027190e832e1b5b";
