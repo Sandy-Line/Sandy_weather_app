@@ -64,8 +64,7 @@ function displayImg(iconUrl) {
   }
 }
 
-/**** Display the h1 temperature ***/
-
+/**** Display the h1 temperature and city ***/
 function displayCityAndTemp(response) {
   console.log(response);
   let city = document.querySelector("#city-title");
@@ -83,8 +82,20 @@ function displayCityAndTemp(response) {
   displayImg(iconUrl);
 }
 
-let key = "59ebc73950183d72b027190e832e1b5b";
-let city = "Paris";
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+// Send the value to the API
+function searchCity(citySearch) {
+  let key = "59ebc73950183d72b027190e832e1b5b";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${key}&units=metric`;
 
-axios.get(url).then(displayCityAndTemp);
+  axios.get(url).then(displayCityAndTemp);
+}
+
+// Get the value of the input form
+function handleSubmit(event) {
+  event.preventDefault();
+  let citySearch = document.querySelector("#input-search");
+  searchCity(citySearch.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
