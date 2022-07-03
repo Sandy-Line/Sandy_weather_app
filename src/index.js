@@ -64,6 +64,32 @@ function displayImg(iconUrl) {
   }
 }
 
+// Display the forecast
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let forecastDay = `<div class="card-group col-12">`;
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  days.forEach(function (day) {
+    forecastDay =
+      forecastDay +
+      `<div class="card-body">
+      <div class="card-title mb-5">       
+      <h5 >${day}</h5> </div>
+              <img
+                src="medias/cloudy.png"
+                class="card-img-top mb-5"
+                alt="shower-rain"
+              />
+              <div class="card-text">
+              <h5 >13°C</h5> </div>
+          </div>`;
+  });
+
+  forecastDay = forecastDay + `</div>`;
+  forecast.innerHTML = forecastDay;
+}
+
 /**** Display the h1 temperature and city ***/
 function displayCityAndTemp(response) {
   console.log(response);
@@ -101,3 +127,4 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 searchCity("Paris");
+displayForecast();
