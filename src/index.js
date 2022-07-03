@@ -69,21 +69,23 @@ function displayForecast() {
   let forecast = document.querySelector("#forecast");
 
   let forecastDay = `<div class="card-group col-12">`;
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
   days.forEach(function (day) {
     forecastDay =
       forecastDay +
-      `<div class="card-body">
-      <div class="card-title mb-5">       
-      <h5 >${day}</h5> </div>
-              <img
-                src="medias/cloudy.png"
-                class="card-img-top mb-5"
-                alt="shower-rain"
-              />
-              <div class="card-text">
-              <h5 >13°C</h5> </div>
-          </div>`;
+      ` <div class="card-body">
+        <div class="card-title mb-4">
+          <h5>${day}</h5>
+        </div>
+        <img
+          src="medias/sun-cloud-icon.png"
+          class="card-img-top mb-4"
+          alt="shower-rain"
+        />
+        <div class="card-text">
+          <h5>13°C</h5>
+        </div>
+      </div>`;
   });
 
   forecastDay = forecastDay + `</div>`;

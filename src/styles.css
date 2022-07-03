@@ -23,10 +23,10 @@ h1 {
 .card-group {
   height: 250px;
 }
-
-.card {
-  border: none;
+.card-body {
+  text-align: center;
 }
+
 .card-img-top {
   max-width: 70px;
 }
